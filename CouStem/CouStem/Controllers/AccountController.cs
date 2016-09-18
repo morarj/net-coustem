@@ -154,16 +154,6 @@ namespace CouStem.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //Temp code
-                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    await roleManager.CreateAsync(new IdentityRole("CanManageUsers")); // Convention to use role names
-                    await roleManager.CreateAsync(new IdentityRole("CanManageClients"));
-                    await roleManager.CreateAsync(new IdentityRole("CanManageCourses"));
-                    await UserManager.AddToRoleAsync(user.Id, "CanManageUsers");
-                    await UserManager.AddToRoleAsync(user.Id, "CanManageClients");
-                    await UserManager.AddToRoleAsync(user.Id, "CanManageCourses");
-
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // Para obtener más información sobre cómo habilitar la confirmación de cuenta y el restablecimiento de contraseña, visite http://go.microsoft.com/fwlink/?LinkID=320771
