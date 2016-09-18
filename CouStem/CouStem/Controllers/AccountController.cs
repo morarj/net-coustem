@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CouStem.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Web.Security;
 
 namespace CouStem.Controllers
 {
@@ -18,6 +19,7 @@ namespace CouStem.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _context;
 
         public AccountController()
         {
@@ -139,7 +141,16 @@ namespace CouStem.Controllers
         // GET: /Account/Register
         public ActionResult Register()
         {
-            return View();
+            _context = new ApplicationDbContext();
+
+            var roles = _context.Roles.ToList();
+            var viewModel = new RegisterViewModel
+            {
+                Roles = roles
+            };
+            
+
+            return View(viewModel);
         }
 
         //
@@ -154,6 +165,14 @@ namespace CouStem.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    // Adding roles to the created user
+                    if(model.CanManageClients)
+                        await UserManager.AddToRoleAsync(user.Id, RoleName.CanManageClients);
+                    if (model.CanManageCourses)
+                        await UserManager.AddToRoleAsync(user.Id, RoleName.CanManageCourses);
+                    if (model.CanManageUsers)
+                        await UserManager.AddToRoleAsync(user.Id, RoleName.CanManageUsers);
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // Para obtener más información sobre cómo habilitar la confirmación de cuenta y el restablecimiento de contraseña, visite http://go.microsoft.com/fwlink/?LinkID=320771

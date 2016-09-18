@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Security;
 
 namespace CouStem.Models
 {
@@ -85,6 +87,12 @@ namespace CouStem.Models
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
+        public IEnumerable<IdentityRole> Roles { get; set; }
+
+        public bool CanManageClients { get; set; }
+        public bool CanManageCourses { get; set; }
+        public bool CanManageUsers { get; set; }
     }
 
     public class ResetPasswordViewModel
