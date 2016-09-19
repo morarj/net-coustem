@@ -26,7 +26,7 @@ namespace CouStem.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<People> Persons { get; set; }
+        public DbSet<People> People { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

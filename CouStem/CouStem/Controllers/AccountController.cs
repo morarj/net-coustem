@@ -139,6 +139,7 @@ namespace CouStem.Controllers
 
         //
         // GET: /Account/Register
+        [AllowAnonymous]
         public ActionResult Register()
         {
             _context = new ApplicationDbContext();
@@ -156,12 +157,25 @@ namespace CouStem.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                _context = new ApplicationDbContext();
+
+                var person = new People
+                {
+                    Name = model.Name,
+                    SecondName = model.SecondName,
+                    LastName = model.LastName,
+                    Birthdate = model.Birthdate
+                };
+                _context.People.Add(person);
+                _context.SaveChanges();
+
+                var user = new ApplicationUser { PeopleId = person.Id, UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
