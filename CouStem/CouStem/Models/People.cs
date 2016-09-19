@@ -19,7 +19,6 @@ namespace CouStem.Models
         [Display(Name = "Segundo Nombre")]
         public string SecondName { get; set; }
 
-        [Required]
         [StringLength(255)]
         [Display(Name = "Apellidos")]
         public string LastName { get; set; }
