@@ -1,0 +1,29 @@
+namespace CouStem.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class AddPersonModel : DbMigration
+    {
+        public override void Up()
+        {
+            CreateTable(
+                "dbo.People",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 255),
+                        SecondName = c.String(maxLength: 255),
+                        LastName = c.String(nullable: false, maxLength: 255),
+                        Birthdate = c.DateTime(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+        }
+        
+        public override void Down()
+        {
+            DropTable("dbo.People");
+        }
+    }
+}
