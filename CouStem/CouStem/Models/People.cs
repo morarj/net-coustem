@@ -6,7 +6,7 @@ using System.Web;
 
 namespace CouStem.Models
 {
-    public class Person
+    public class People
     {
         public int Id { get; set; }
 

@@ -185,11 +185,15 @@
     <Compile Include="Migrations\201609182356073_AddPersonModel.Designer.cs">
       <DependentUpon>201609182356073_AddPersonModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609190217100_AddPeopleIdToUser.cs" />
+    <Compile Include="Migrations\201609190217100_AddPeopleIdToUser.Designer.cs">
+      <DependentUpon>201609190217100_AddPeopleIdToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\People.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -275,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609182356073_AddPersonModel.resx">
       <DependentUpon>201609182356073_AddPersonModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609190217100_AddPeopleIdToUser.resx">
+      <DependentUpon>201609190217100_AddPeopleIdToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
