@@ -76,7 +76,6 @@ namespace CouStem.Models
         [Display(Name = "Segundo Nombre")]
         public string SecondName { get; set; }
 
-        [Required]
         [StringLength(255)]
         [Display(Name = "Apellidos")]
         public string LastName { get; set; }
@@ -106,7 +105,7 @@ namespace CouStem.Models
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
 
-        public IEnumerable<IdentityRole> Roles { get; set; }
+        //public IEnumerable<IdentityRole> Roles { get; set; }
 
         public bool CanManageClients { get; set; }
         public bool CanManageCourses { get; set; }
