@@ -52,9 +52,10 @@ namespace CouStem.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Correo electrónico")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [MinLength(4)]
+        [StringLength(255)]
+        [Display(Name = "Nombre de Usuario")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

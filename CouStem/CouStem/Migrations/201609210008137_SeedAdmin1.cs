@@ -3,7 +3,7 @@ namespace CouStem.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class SeedAdmin : DbMigration
+    public partial class SeedAdmin1 : DbMigration
     {
         public override void Up()
         {
@@ -15,8 +15,6 @@ INSERT INTO [dbo].[AspNetUsers] ([Id], [Email], [EmailConfirmed], [PasswordHash]
 INSERT INTO [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'7a26e096-cf55-4767-8b13-ddd5e0996d61', N'3c8d7027-0975-4296-a008-d7b99d901070')
 INSERT INTO [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'7a26e096-cf55-4767-8b13-ddd5e0996d61', N'4d879f21-c7ca-4b69-8900-1ffb812061f2')
 INSERT INTO [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'7a26e096-cf55-4767-8b13-ddd5e0996d61', N'e5a0c18b-7c17-4984-b73d-16a0a4a87757')
-
-
                 ");
         }
         
